@@ -1,43 +1,54 @@
 
 
 const body = document.querySelector('body')
-const popupCloseButton = document.querySelectorAll('.close-popap')
 const table = document.querySelector('table')
-const url = 'https://plotpet2015.amocrm.ru'
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk1YjEwMzYyNjg3MGRlYzEyZGY3YjIzMmIwMTIyNmMwM2I0MTVhNDdlMzdmYzQ3NDE3MjY0NjY4ZmM1OWRhMzY2NDQ4NTU3ZjVjY2Y3YjE3In0.eyJhdWQiOiI5NTZhYWYxYi1kYzY3LTRiNmEtYjc0ZC1mMDg4MDM4M2M3ZjMiLCJqdGkiOiI5NWIxMDM2MjY4NzBkZWMxMmRmN2IyMzJiMDEyMjZjMDNiNDE1YTQ3ZTM3ZmM0NzQxNzI2NDY2OGZjNTlkYTM2NjQ0ODU1N2Y1Y2NmN2IxNyIsImlhdCI6MTcyNzg1NzM2NywibmJmIjoxNzI3ODU3MzY3LCJleHAiOjE3Mjg1MTg0MDAsInN1YiI6IjExNTc4MzE4IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMxOTc3MDQ2LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJjcm0iLCJmaWxlcyIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiLCJwdXNoX25vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiZjBhZDc3MjctNDNlZC00NzhhLTg1MmMtMzcyNTA1NWI4ZjI4IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.EgEYPfX_eqiTkoSowXH-3M8el_P4IKdC_7MaPwih9Dvcqczsp0zR8U1rekJxQpLEgmKhfYW4KYuMK6HqNP7UUhj7a_XUfaFwaeAcGR25qjqdbKt3x9MLf_vc28IQihGk7cRARWabAp6CWwUC0OYct6JO2mkK_v5Q2o28sfGOxAcTpRrefPa5UAh1PbXdft_AvCGNfljb5QEYvHGV749Y-RyqF1qcYr_cubShr6F0dX_ou9Jb-ghGhSjluOLgL8v-duBBGkQsHBNLcLtz3_sMxFZKnIHgQVjo2IHl62bYkF1lcjCxKB5F0jg_XyoZGYu1KS_1xnc7Dz7Ht_e-zSXx-g'
+const URL = 'https://plotpet2015.amocrm.ru'
+const TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk1YjEwMzYyNjg3MGRlYzEyZGY3YjIzMmIwMTIyNmMwM2I0MTVhNDdlMzdmYzQ3NDE3MjY0NjY4ZmM1OWRhMzY2NDQ4NTU3ZjVjY2Y3YjE3In0.eyJhdWQiOiI5NTZhYWYxYi1kYzY3LTRiNmEtYjc0ZC1mMDg4MDM4M2M3ZjMiLCJqdGkiOiI5NWIxMDM2MjY4NzBkZWMxMmRmN2IyMzJiMDEyMjZjMDNiNDE1YTQ3ZTM3ZmM0NzQxNzI2NDY2OGZjNTlkYTM2NjQ0ODU1N2Y1Y2NmN2IxNyIsImlhdCI6MTcyNzg1NzM2NywibmJmIjoxNzI3ODU3MzY3LCJleHAiOjE3Mjg1MTg0MDAsInN1YiI6IjExNTc4MzE4IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMxOTc3MDQ2LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJjcm0iLCJmaWxlcyIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiLCJwdXNoX25vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiZjBhZDc3MjctNDNlZC00NzhhLTg1MmMtMzcyNTA1NWI4ZjI4IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.EgEYPfX_eqiTkoSowXH-3M8el_P4IKdC_7MaPwih9Dvcqczsp0zR8U1rekJxQpLEgmKhfYW4KYuMK6HqNP7UUhj7a_XUfaFwaeAcGR25qjqdbKt3x9MLf_vc28IQihGk7cRARWabAp6CWwUC0OYct6JO2mkK_v5Q2o28sfGOxAcTpRrefPa5UAh1PbXdft_AvCGNfljb5QEYvHGV749Y-RyqF1qcYr_cubShr6F0dX_ou9Jb-ghGhSjluOLgL8v-duBBGkQsHBNLcLtz3_sMxFZKnIHgQVjo2IHl62bYkF1lcjCxKB5F0jg_XyoZGYu1KS_1xnc7Dz7Ht_e-zSXx-g'
 
-getDeals(token, url, table)
+renderListDeals(TOKEN, URL)
 
-async function getDeals (token, url, htmlElement) {
+async function getDeals (token, url, page, limit) {
     try {
-        let pageNumber = 1
+        const response = await fetch(`${url}/api/v4/leads?page=${page}&limit=${limit}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+        });
 
-        const intervalId = setInterval(async()=>{
+        const data = await response.json()
 
-            const response = await fetch(`${url}/api/v4/leads?page=${pageNumber++}&limit=3`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + token
-                },
-            });
-
-            const data = await response.json()
-
-            const listOfDeals = []
-            listOfDeals.push(...data._embedded.leads)
-
-            addArrayDealsInHtml(listOfDeals, htmlElement)
-
-            if(!data._links.next){
-               clearInterval(intervalId) 
-               addEventForPopup(token, url)
-            }
-
-        },1000)
-        
+        return data
+  
     } catch (error) {
       console.log(error);
     }
+}
+
+function renderListDeals(token, url) {
+
+    const listOfDeals = []
+    
+    const intervalId = setInterval(() => {
+
+        let page = 1 
+        let limit = 3
+
+        const data = getDeals(token, url, page, limit)
+
+        listOfDeals.push(...data._embedded.leads)
+
+        page++
+
+        if(!data._links.next){
+
+            clearInterval(intervalId) 
+            addEventForPopup(token, url)
+        }
+    }, 1000);
+    
+    addArrayDealsInHtml(listOfDeals, htmlElement)
+
 }
 
 function addArrayDealsInHtml(arrayDeals, htmlElement){
@@ -69,7 +80,7 @@ function addEventForPopup(token, url){
                 const popup = document.getElementById('deal')
                 event.target.parentNode.classList.add('loading')
 
-                getDealById(event.target.parentNode, token, url)
+                renderPopup(event.target.parentNode, token, url)
 
                 setTimeout(() => {
 
@@ -80,21 +91,6 @@ function addEventForPopup(token, url){
                 
             })
         }
-    }
-}
-
-if(popupCloseButton.length > 0){
-
-    for (let i = 0; i < popupCloseButton.length; i++) {
-
-        const closeButton = popupCloseButton[i];
-
-        closeButton.addEventListener('click',(event)=>{
-            event.preventDefault()
-
-            popupClose(closeButton.closest('.modal'))
-
-        })
     }
 }
 
@@ -128,16 +124,6 @@ function popupClose(popup) {
         
 }
 
-document.addEventListener('keydown', (event) => {
-
-    if(event.key === 'Escape'){
-
-        const popupActive = document.querySelector('.modal.open')
-        popupClose(popupActive)
-
-    }
-})
-
 async function getDealById (parent, token, url) {
     try {
 
@@ -155,13 +141,41 @@ async function getDealById (parent, token, url) {
             
             const data = await response.json()
 
-            const popupContent = document.querySelector('.wrapper-content')
-            insertDealsDataIntoPopup(data, popupContent)
+            return data
 
         }
 
     } catch (e) {
       console.log(e);
+    }
+}
+
+function renderPopup(parent, token, url) {
+
+    const popupContent = document.querySelector('.wrapper-content')
+    const closeButton = document.querySelectorAll('.close-popup')
+
+    const data = getDealById(parent, token, url)
+    insertDealsDataIntoPopup(data, popupContent)
+
+    closeButton.addEventListener('click',(event)=>{
+        event.preventDefault()
+
+        popupClose(closeButton.closest('.modal'))
+
+    })
+   
+
+    document.addEventListener('keydown', button => closePopupToEsc(button))
+}
+
+function closePopupToEsc(btn) {
+
+    if(btn.key === 'Escape'){
+
+        const popupActive = document.querySelector('.modal.open')
+        popupClose(popupActive)
+
     }
 }
 
@@ -172,8 +186,8 @@ function insertDealsDataIntoPopup(deal, popup){
     popupContent.innerHTML = `
         <h2>${deal.name}</h2>
         <p>id сделки: ${deal.id}</p>
-        <p>дата сделки: ${dateConversion(deal.created_at)} </p>
-        <div class="task ${dateComparison(deal.closest_task_at)}">статус задачи:</div>        
+        <p>дата сделки: ${getDateFromTimestamp(deal.created_at)} </p>
+        <div class="task ${getStatusColorTask(deal.closest_task_at)}">статус задачи:</div>        
     ` 
     popupContent.classList.add('content')
 
@@ -181,42 +195,41 @@ function insertDealsDataIntoPopup(deal, popup){
 
 }
 
-function dateComparison(timestamp) {
-    
-    if (timestamp) {
+function getStatusColorTask(timestamp) {
+   
+        const statusColor ={
+            expired: 'red',
+            current: 'green',
+            upcoming: 'yellow'
+        }
 
-        const todey = new Date()
-        todey.setHours(0, 0, 0, 0) 
+        if(timestamp){
 
-        const dateTask = new Date(timestamp * 1000)
-        dateTask.setHours(0,0,0,0)
+            const today = new Date()
+            today.setHours(0, 0, 0, 0)
+            today.getTime() 
+
+            const dateTask = new Date(timestamp * 1000)
+            dateTask.setHours(0,0,0,0)
+            dateTask.getTime()
         
-        if(todey.getTime() === dateTask.getTime()){
-            return 'green'
+            if(today === dateTask){
+                return statusColor.current
+            }
+        
+            if(today < dateTask){
+                return statusColor.upcoming
+            }
         }
-        if (todey.getTime() > dateTask.getTime()) {
-            return 'red'
-        }
-        if(todey.getTime() < dateTask.getTime()){
-            return 'yellow'
-        }
-    }
-    
-    return 'red'
+        
+    return statusColor.expired
         
 }
 
-function dateConversion(timestamp) {
-
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function getDateFromTimestamp(timestamp) {
 
     const date = new Date(timestamp*1000)
-    date.setHours(0,0,0,0)
 
-    const year = date.getFullYear();
-    const month = months[date.getMonth()];
-    const number = date.getDate();
-
-    return number+' '+month+' '+year
+    return date.toLocaleDateString()
 }
 
